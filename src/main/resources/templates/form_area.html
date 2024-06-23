@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Área</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Formulario de Área</h2>
+        <form action="/area/guardar" method="post" th:object="${area}">
+            <div class="form-group">
+                <label>Nombre del Área:</label>
+                <input type="text" class="form-control" th:field="*{nombreArea}">
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="/area" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

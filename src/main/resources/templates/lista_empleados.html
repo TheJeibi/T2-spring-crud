@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Empleados</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Lista de Empleados</h2>
+        <a href="/empleados/nuevo" class="btn btn-primary mb-3">Agregar Empleado</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>DNI</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Dirección</th>
+                    <th>Correo</th>
+                    <th>Área</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="empleado : ${empleados}">
+                    <td th:text="${empleado.dniEmpleado}"></td>
+                    <td th:text="${empleado.nombreEmpleado}"></td>
+                    <td th:text="${empleado.apellidoEmpleado}"></td>
+                    <td th:text="${#dates.format(empleado.fechaNacimiento, 'dd-MM-yyyy')}"></td>
+                    <td th:text="${empleado.direccion}"></td>
+                    <td th:text="${empleado.correo}"></td>
+                    <td th:text="${empleado.area.nombreArea}"></td>
+                    <td>
+                        <a th:href="@{/empleados/editar/{dni}(dni=${empleado.dniEmpleado})}" class="btn btn-warning btn-sm">Editar</a>
+                        <a th:href="@{/empleados/eliminar/{dni}(dni=${empleado.dniEmpleado})}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
